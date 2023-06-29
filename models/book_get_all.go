@@ -21,7 +21,7 @@ func BookGetAll(page int, limit int) (bookslist []Books, totalCount int, err err
 	for rows.Next() {
 		var books Books
 
-		err = rows.Scan(&books.ID, &books.BookName, &books.Edition, &books.PublicationYear, &books.Authors)
+		err = rows.Scan(&books.ID, &books.BookName, &books.Edition, &books.PublicationYear)
 		if err != nil {
 			continue
 		}

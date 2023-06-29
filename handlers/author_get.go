@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func BookGet(w http.ResponseWriter, r *http.Request) {
+func AuthorGet(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
 		log.Printf("Error parsing id: %v", err)
@@ -17,13 +17,25 @@ func BookGet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	books, err := models.BookGet(int64(id))
+	authors, err := models.AuthorGet(int64(id))
 	if err != nil {
-		log.Printf("Failed updating book: %v", err)
+		log.Printf("Failed getting author: %v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
+	books, err := models.GetBooksByAuthorID(int64(id))
+	if err != nil {
+		log.Printf("Failed getting books: %v", err)
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		return
+	}
+
+	response := map[string]interface{}{
+		"author": authors,
+		"books":  books,
+	}
+
 	w.Header().Add("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
+	json.NewEncoder(w).Encode(response)
 }

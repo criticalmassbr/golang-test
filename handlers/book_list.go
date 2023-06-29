@@ -29,7 +29,7 @@ func BookList(w http.ResponseWriter, r *http.Request) {
 	books, totalCount, err := models.BookGetAll(page, limit)
 	if err != nil {
 		log.Printf("Error obtaining book registers: %v", err)
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 

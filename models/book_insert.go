@@ -11,7 +11,7 @@ func BookInsert(books Books) (id int64, err error) {
 
 	sql := `INSERT INTO books (book_name, edition, publication_year, authors) VALUES ($1, $2, $3, $4) RETURNING id`
 
-	err = conn.QueryRow(sql, books.BookName, books.Edition, books.PublicationYear, books.Authors).Scan(&id)
+	err = conn.QueryRow(sql, books.BookName, books.Edition, books.PublicationYear).Scan(&id)
 
 	return
 }

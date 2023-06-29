@@ -56,121 +56,31 @@ In the **main.go** file folder run:
 ## Testing
 
 To test, go to the folder *collection* and import in ***Postman*** or ***Insomnia*** to build the fields as below:
+### To test the GET ALL Authors Route
+
+> **[POST] http://localhost:9000/Author/**
+
+### To test the GET Authors by Id Route
+
+> **[POST] http://localhost:9000/Author/{id}**
 
 ### To test the POST (Insert) Book Route
 
-> **[POST] http://localhost:9000/**
-> ****
-> **Request Body:**
-> {
-> 
->"book_name": "Harry Potter and the Sorcerer's Stone",
-> 
->"edition": "1st American Edition",
-> 
->"publication_year": "1998",
-> 
->"Authors": "J.K. Rowling"
-> 
->}
-> 
-> **Response Body:**
-> {
-"Message": "Book successfully inserted! Id: 1"
-}
+> **[POST] http://localhost:9000/books/**
+
 ### To test the PUT (Update) Book Route
-> **[PUT] http://localhost:9000/{id}**
-> ****
-> **Request Body:** 
-> {
-> 
-> "id": 5
->
->"book_name": "Pride and Prejudice",
->
->"edition": "200th Anniversary Edition",
->
->"publication_year": "1813",
->
->"Authors": "Jane Austen"
->
->}
->
-> **Response Body:**
-> {
-"Message": "Message": "Book successfully updated!"
-}
+> **[PUT] http://localhost:9000/books/{id}**
+
 
 ### To test the GET ALL Books Route
-> **[GET] http://localhost:9000/**
-> ****
-> **Request Body:** empty
-> 
-> **Response Body:**
-> [
->{
-> 
->"id": 1,
-> 
->"book_name": "Harry Potter and the Sorcerer's Stone",
-> 
->"edition": "1st American Edition",
-> 
->"publication_year": "1997",
-> 
->"authors": "J.K. Rowling"
-> 
->},
-> 
->{
-> 
->"id": 2,
-> 
->"book_name": "The Great Gatsby",
-> 
->"edition": "First Edition",
-> 
->"publication_year": "1925",
-> 
->"authors": "{\"F. Scott Fitzgerald\"}"
-> 
->}, ...
-> ]
+> **[GET] http://localhost:9000/books/**
+
 
 ### To test the GET Book by Id Route
-> **[GET] http://localhost:9000/{id}**
-> ****
-> **Request Body:** empty
->
-> **Response Body:**
-> [
->{
->
->"id": 1,
->
->"book_name": "Harry Potter and the Sorcerer's Stone",
->
->"edition": "1st American Edition",
->
->"publication_year": "1997",
->
->"authors": "J.K. Rowling"
->
->}
+> **[GET] http://localhost:9000/books/{id}**
+
 
 ### To test the DELETE Book by Id Route
-> **[GET] http://localhost:9000/{id}**
-> ****
-> **Request Body:**
-> {
-> 
-> "id": 1
-> 
-> }
->
-> **Response Body:**
-> {
-"Message": "Message": "Book successfully deleted!"
-}
-> 
+> **[GET] http://localhost:9000/books/{id}**
+
 ## Thank you for reading! Enjoy the CRUD! :) 

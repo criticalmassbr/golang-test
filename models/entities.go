@@ -5,5 +5,9 @@ type Books struct {
 	BookName        string `json:"book_name"`
 	Edition         string `json:"edition"`
 	PublicationYear string `json:"publication_year"`
-	Authors         string `json:"authors"`
+}
+
+type Authors struct {
+	ID         int64  `json:"id"`
+	AuthorName string `json:"Author_name"`
 }

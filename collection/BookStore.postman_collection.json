@@ -6,127 +6,192 @@
 	},
 	"item": [
 		{
-			"name": "Get Book",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get Author By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/authors/{id}",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"authors",
+								"{id}"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:9000",
-					"host": [
-						"localhost"
-					],
-					"port": "9000"
+				{
+					"name": "Get All Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/authors/",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"authors",
+								""
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Get Book By Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:9000/5",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Post Book",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"book_name\": \"The Lord of the Rings\",\r\n    \"edition\": \"Anniversary Edition\",\r\n    \"publication_year\": \"1954\",\r\n    \"Authors\": \"J.R.R. Tolkien\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Books",
+			"item": [
+				{
+					"name": "Post Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book_name\": \"TESTEEEE\",\r\n    \"edition\": \"TESTEEEE\",\r\n    \"publication_year\": \"TESTEEEE\",\r\n    \"Authors\": \"TESTEEEE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/books/",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"books",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:9000",
-					"host": [
-						"localhost"
-					],
-					"port": "9000"
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Book",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 3\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Get Book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/books/?page=2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"books",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:9000/3",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Book Copy",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"id\": 1,\r\n        \"book_name\": \"Harry Potter and the Sorcerer's Stone\",\r\n        \"edition\": \"1st American Edition\",\r\n        \"publication_year\": \"1997\",\r\n        \"authors\": \"J.K. Rowling\"\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Get Book By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/books/20",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"books",
+								"20"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:9000/1",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"1"
-					]
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/books/40",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"books",
+								"40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 39,\r\n    \"book_name\": \"OPSSSSSSS\",\r\n    \"edition\": \"TESTEEEE\",\r\n    \"publication_year\": \"TESTEEEE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/books/39",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"books",
+								"39"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

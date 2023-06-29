@@ -11,7 +11,7 @@ func BookGet(id int64) (books Books, err error) {
 
 	row := conn.QueryRow(`SELECT * FROM books WHERE id=$1`, id)
 
-	err = row.Scan(&books.ID, &books.BookName, &books.Edition, &books.PublicationYear, &books.Authors)
+	err = row.Scan(&books.ID, &books.BookName, &books.Edition, &books.PublicationYear)
 
 	return
 }

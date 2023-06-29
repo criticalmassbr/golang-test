@@ -16,11 +16,15 @@ func main() {
 
 	// Books Routers
 	r := chi.NewRouter()
-	r.Post("/", handlers.BookCreate)
-	r.Put("/{id}", handlers.BookUpdate)
-	r.Delete("/{id}", handlers.BookDelete)
-	r.Get("/", handlers.BookList)
-	r.Get("/{id}", handlers.Get)
+	r.Post("/books", handlers.BookCreate)
+	r.Put("/books/{id}", handlers.BookUpdate)
+	r.Delete("/books/{id}", handlers.BookDelete)
+	r.Get("/books/", handlers.BookList)
+	r.Get("/books/{id}", handlers.BookGet)
+
+	// Authors Routers
+	r.Get("/authors", handlers.AuthorList)
+	r.Get("/authors/{id}", handlers.AuthorGet)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
 }

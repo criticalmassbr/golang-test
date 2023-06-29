@@ -9,8 +9,8 @@ func BookUpdate(id int64, books Books) (int64, error) {
 	}
 	defer conn.Close()
 
-	res, err := conn.Exec(`UPDATE books SET book_name=$2, edition=$3, publication_year=$4, authors=$5 WHERE id=$1`, id,
-		books.BookName, books.Edition, books.PublicationYear, books.Authors)
+	res, err := conn.Exec(`UPDATE books SET book_name=$2, edition=$3, publication_year=$4 WHERE id=$1`, id,
+		books.BookName, books.Edition, books.PublicationYear)
 	if err != nil {
 		return 0, err
 	}

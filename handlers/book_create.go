@@ -14,7 +14,7 @@ func BookCreate(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&books)
 	if err != nil {
 		log.Printf("Error decoding json: %v", err)
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
