@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func GetAll(page int, limit int) (bookslist []Books, totalCount int, err error) {
+func BookGetAll(page int, limit int) (bookslist []Books, totalCount int, err error) {
 	conn, err := db.OpenConnection()
 	if err != nil {
 		return

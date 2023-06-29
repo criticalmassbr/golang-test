@@ -58,6 +58,7 @@ func main() {
 	// Insert each author into the table
 	totalAuthors := len(authors)
 	progressIndicator := NewProgressIndicator(totalAuthors)
+	batchCount := 0
 	for i, author := range authors {
 		_, err := stmt.Exec(author)
 		if err != nil {
@@ -65,6 +66,16 @@ func main() {
 		}
 
 		progressIndicator.Update(i + 1)
+
+		// Check if the batch count has reached 50,000
+		if (i+1)%50000 == 0 {
+			progressIndicator.Complete()
+			batchCount++
+			fmt.Printf("Batch: %d, Loading next batch... please wait.\n", batchCount)
+
+			// Reset the progress indicator for the next batch
+			progressIndicator = NewProgressIndicator(totalAuthors)
+		}
 	}
 	progressIndicator.Complete()
 
@@ -92,7 +103,11 @@ func (pi *ProgressIndicator) Update(current int) {
 	pi.current = current
 
 	if pi.current != pi.previous {
-		fmt.Printf("\rProgress: %d/%d", pi.current, pi.total)
+		if pi.current%50000 == 0 {
+			fmt.Printf("\rBatch: %d, Progress: %d/%d", pi.current/50000, pi.current, pi.total)
+		} else {
+			fmt.Printf("\rBatch: %d, Progress: %d", pi.current/50000, pi.current)
+		}
 		pi.previous = pi.current
 	}
 }

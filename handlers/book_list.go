@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func List(w http.ResponseWriter, r *http.Request) {
+func BookList(w http.ResponseWriter, r *http.Request) {
 	pageStr := r.URL.Query().Get("page")
 	limitStr := r.URL.Query().Get("limit")
 
@@ -26,7 +26,7 @@ func List(w http.ResponseWriter, r *http.Request) {
 		limit = defaultLimit
 	}
 
-	books, totalCount, err := models.GetAll(page, limit)
+	books, totalCount, err := models.BookGetAll(page, limit)
 	if err != nil {
 		log.Printf("Error obtaining book registers: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)

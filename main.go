@@ -14,11 +14,12 @@ func main() {
 		panic(err)
 	}
 
+	// Books Routers
 	r := chi.NewRouter()
-	r.Post("/", handlers.Create)
-	r.Put("/{id}", handlers.Update)
-	r.Delete("/{id}", handlers.Delete)
-	r.Get("/", handlers.List)
+	r.Post("/", handlers.BookCreate)
+	r.Put("/{id}", handlers.BookUpdate)
+	r.Delete("/{id}", handlers.BookDelete)
+	r.Get("/", handlers.BookList)
 	r.Get("/{id}", handlers.Get)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)

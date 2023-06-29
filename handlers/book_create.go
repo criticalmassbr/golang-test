@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func Create(w http.ResponseWriter, r *http.Request) {
+func BookCreate(w http.ResponseWriter, r *http.Request) {
 	var books models.Books
 
 	err := json.NewDecoder(r.Body).Decode(&books)
@@ -18,7 +18,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id, err := models.Insert(books)
+	id, err := models.BookInsert(books)
 
 	var resp map[string]any
 

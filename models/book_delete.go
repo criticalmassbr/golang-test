@@ -2,7 +2,7 @@ package models
 
 import "DialogBookStore/db"
 
-func Delete(id int64) (int64, error) {
+func BookDelete(id int64) (int64, error) {
 	conn, err := db.OpenConnection()
 	if err != nil {
 		return 0, err

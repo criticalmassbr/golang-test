@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func Get(w http.ResponseWriter, r *http.Request) {
+func BookDelete(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
 		log.Printf("Error parsing id: %v", err)
@@ -17,13 +17,21 @@ func Get(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	books, err := models.Get(int64(id))
+	rows, err := models.BookDelete(int64(id))
 	if err != nil {
-		log.Printf("Failed updating book: %v", err)
+		log.Printf("Failed deleting book: %v", err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
+	if rows > 1 {
+		log.Printf("Error: %d books deleted", rows)
+	}
+
+	resp := map[string]any{
+		"Message": "Data successfully deleted!",
+	}
+
 	w.Header().Add("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
+	json.NewEncoder(w).Encode(resp)
 }

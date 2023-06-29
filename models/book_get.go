@@ -2,7 +2,7 @@ package models
 
 import "DialogBookStore/db"
 
-func Get(id int64) (books Books, err error) {
+func BookGet(id int64) (books Books, err error) {
 	conn, err := db.OpenConnection()
 	if err != nil {
 		return

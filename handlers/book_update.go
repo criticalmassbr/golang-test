@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func Update(w http.ResponseWriter, r *http.Request) {
+func BookUpdate(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(chi.URLParam(r, "id"))
 	if err != nil {
 		log.Printf("Error parsing id: %v", err)
@@ -26,7 +26,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rows, err := models.Update(int64(id), books)
+	rows, err := models.BookUpdate(int64(id), books)
 	if err != nil {
 		log.Printf("Failed updating book: %v", err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
