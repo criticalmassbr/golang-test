@@ -25,14 +25,14 @@ interacting with a 2 table POSTGRES DB called **bookstore**:
 In your terminal go to the project root folder and run the commands to install the required libraries:
 
 **Viper Lib**
-> **go get github.com/spf13/viper**
+>> **go get github.com/spf13/viper**
 
 **Chi Lib** 
-> **go get github.com/go-chi/chi/v5**
+>> **go get github.com/go-chi/chi/v5**
 
 ### **Docker Compose**
 To build the Database defined in the docker compose file run the line below in the terminal:
-> **docker compose up**   *or* **docker compose up -d**
+>> **docker compose up**   *or* **docker compose up -d**
 
 To stop the containers defined in docker compose file:
 
@@ -43,10 +43,10 @@ To stop and remove containers, networks, and volumes defined in a Docker Compose
 > **docker compose down --remove-orphans**
 
 ### **Populating the Authors Table**
-To transfer the authors.csv file data to the database run in the terminal (in the main folder):
-> **go run populate_authors.go**
+To transfer the authors.csv file data to the database run in the **terminal** (in **/DialogBookStoreAPI folder**):
+>> **go run populate/populate_authors.go**
 
-PS.: It may take few minutes.
+PS.: In this version it may take 60 to 100 minutes. You can leave it running while you do other activities.
 
 ### Running the API Locally
 In the **main.go** file folder run:

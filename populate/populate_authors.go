@@ -28,7 +28,7 @@ func main() {
 	defer db.Close()
 
 	// Open the CSV file
-	csvFile, err := os.Open("authors.csv")
+	csvFile, err := os.Open("populate/authors.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -56,12 +56,48 @@ func main() {
 	fmt.Println("Loading... please wait.")
 
 	// Insert each author into the table
-	for _, author := range authors {
+	totalAuthors := len(authors)
+	progressIndicator := NewProgressIndicator(totalAuthors)
+	for i, author := range authors {
 		_, err := stmt.Exec(author)
 		if err != nil {
 			log.Fatal(err)
 		}
+
+		progressIndicator.Update(i + 1)
 	}
+	progressIndicator.Complete()
 
 	fmt.Println("Data inserted successfully!")
+}
+
+// ProgressIndicator is used to display the progress of a task
+type ProgressIndicator struct {
+	total    int
+	current  int
+	previous int
+}
+
+// NewProgressIndicator creates a new instance of ProgressIndicator
+func NewProgressIndicator(total int) *ProgressIndicator {
+	return &ProgressIndicator{
+		total:    total,
+		current:  0,
+		previous: 0,
+	}
+}
+
+// Update updates the progress indicator with the current progress
+func (pi *ProgressIndicator) Update(current int) {
+	pi.current = current
+
+	if pi.current != pi.previous {
+		fmt.Printf("\rProgress: %d/%d", pi.current, pi.total)
+		pi.previous = pi.current
+	}
+}
+
+// Complete marks the progress indicator as complete
+func (pi *ProgressIndicator) Complete() {
+	fmt.Println()
 }

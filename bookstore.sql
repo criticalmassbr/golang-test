@@ -10,6 +10,48 @@ CREATE TABLE books (
                        publication_year TEXT,
                        authors TEXT
 );
+
+INSERT INTO authors (author)
+VALUES
+    ('J.D. Salinger'),
+    ('Herman Melville'),
+    ('J.R.R. Tolkien'),
+    ('Harper Lee'),
+    ('George Orwell'),
+    ('Jane Austen'),
+    ('J.K. Rowling'),
+    ('F. Scott Fitzgerald'),
+    ('Leo Tolstoy'),
+    ('Homer'),
+    ('Lewis Carroll'),
+    ('J.R.R. Tolkien'),
+    ('Aldous Huxley'),
+    ('Miguel de Cervantes'),
+    ('C.S. Lewis'),
+    ('Dante Alighieri'),
+    ('Margaret Mitchell'),
+    ('Mark Twain'),
+    ('Charlotte Brontë'),
+    ('Joseph Heller'),
+    ('Mary Shelley'),
+    ('Oscar Wilde'),
+    ('Paulo Coelho'),
+    ('William Golding'),
+    ('Fyodor Dostoevsky'),
+    ('John Steinbeck'),
+    ('Emily Brontë'),
+    ('Alexandre Dumas'),
+    ('Fyodor Dostoevsky'),
+    ('Gabriel García Márquez'),
+    ('Leo Tolstoy'),
+    ('Nathaniel Hawthorne'),
+    ('Frances Hodgson Burnett'),
+    ('Charles Dickens'),
+    ('Charles Dickens'),
+    ('Ernest Hemingway'),
+    ('Victor Hugo'),
+    ('Antoine de Saint-Exupéry');
+
 INSERT INTO books (book_name, edition, publication_year, authors)
 VALUES
     ('The Catcher in the Rye', 'First Edition', '1951', 'J.D. Salinger'),
