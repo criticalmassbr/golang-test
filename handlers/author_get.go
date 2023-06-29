@@ -52,7 +52,7 @@ func AuthorGetByName(w http.ResponseWriter, r *http.Request) {
 
 	books, err := models.GetBooksByAuthorID(author.ID)
 	if err != nil {
-		log.Printf("Failed getting books: %v", err)
+		log.Printf("Failed getting books by author ID: %v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}

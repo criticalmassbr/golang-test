@@ -19,7 +19,7 @@ func main() {
 	r.Post("/books", handlers.BookCreate)
 	r.Put("/books/{id}", handlers.BookUpdate)
 	r.Delete("/books/{id}", handlers.BookDelete)
-	r.Get("/books/", handlers.BookList)
+	r.Get("/books", handlers.BookList)
 	r.Get("/books/{id}", handlers.BookGet)
 
 	// Authors Routers

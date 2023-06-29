@@ -17,7 +17,7 @@ CREATE TABLE books_authors (
                               FOREIGN KEY (author_id) REFERENCES authors (id)
 );
 
--- Insert authors
+-- Insert authors (First populating before CSV)
 INSERT INTO authors (author_name)
 VALUES
     ('J.D. Salinger'),

@@ -9,38 +9,57 @@
 			"name": "Authors",
 			"item": [
 				{
-					"name": "Get Author By Id",
+					"name": "Get All Authors",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9000/authors/{id}",
+							"raw": "localhost:9000/authors",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
-								"authors",
-								"{id}"
+								"authors"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get All Authors",
+					"name": "Get Author By Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9000/authors/",
+							"raw": "localhost:9000/authors/1",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
 								"authors",
-								""
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Author By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/authors/name/Mark Twain",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"authors",
+								"name",
+								"Mark Twain"
 							]
 						}
 					},
@@ -58,7 +77,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"book_name\": \"TESTEEEE\",\r\n    \"edition\": \"TESTEEEE\",\r\n    \"publication_year\": \"TESTEEEE\",\r\n    \"Authors\": \"TESTEEEE\"\r\n}",
+							"raw": "{\r\n    \"book_name\": \"TESTEEEE\",\r\n    \"edition\": \"TESTEEEE\",\r\n    \"publication_year\": \"TESTEEEE\",\r\n    \"authors\": [5]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,14 +85,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9000/books/",
+							"raw": "localhost:9000/books",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
-								"books",
-								""
+								"books"
 							]
 						}
 					},
@@ -97,19 +115,22 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9000/books/?page=2",
+							"raw": "localhost:9000/books?page=20&limit=3",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
-								"books",
-								""
+								"books"
 							],
 							"query": [
 								{
 									"key": "page",
-									"value": "2"
+									"value": "20"
+								},
+								{
+									"key": "limit",
+									"value": "3"
 								}
 							]
 						}
@@ -122,14 +143,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9000/books/20",
+							"raw": "localhost:9000/books/23",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
 								"books",
-								"20"
+								"23"
 							]
 						}
 					},
@@ -142,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 40\r\n}",
+							"raw": "{\r\n    \"id\": 63\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -150,14 +171,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9000/books/40",
+							"raw": "localhost:9000/books/63",
 							"host": [
 								"localhost"
 							],
 							"port": "9000",
 							"path": [
 								"books",
-								"40"
+								"63"
 							]
 						}
 					},

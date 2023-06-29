@@ -9,29 +9,43 @@ import (
 )
 
 func BookCreate(w http.ResponseWriter, r *http.Request) {
-	var books models.Books
+	var bookReq models.BookRequest
 
-	err := json.NewDecoder(r.Body).Decode(&books)
+	err := json.NewDecoder(r.Body).Decode(&bookReq)
 	if err != nil {
-		log.Printf("Error decoding json: %v", err)
+		log.Printf("Error decoding JSON: %v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
 
-	id, err := models.BookInsert(books)
+	book := models.Books{
+		BookName:        bookReq.BookName,
+		Edition:         bookReq.Edition,
+		PublicationYear: bookReq.PublicationYear,
+	}
 
-	var resp map[string]any
-
+	// Insert book and get the generated book ID
+	bookID, err := models.BookInsert(book)
 	if err != nil {
-		resp = map[string]any{
-			"Message": fmt.Sprintf("Failed trying to insert book: %v", err),
+		log.Printf("Failed to insert book: %v", err)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+
+	for _, authorID := range bookReq.Authors {
+		booksAuthors := models.BooksAuthors{
+			AuthorID: authorID,
+			BookID:   bookID,
 		}
-	} else {
-		resp = map[string]any{
-			"Message": fmt.Sprintf("Book successfully inserted! Id: %d", id),
+
+		_, err := models.BookAuthorsInsert(booksAuthors)
+		if err != nil {
 		}
 	}
 
+	resp := map[string]interface{}{
+		"Message": fmt.Sprintf("Book successfully inserted! ID: %d", bookID),
+	}
 	w.Header().Add("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
 }
