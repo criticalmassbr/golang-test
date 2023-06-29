@@ -39,3 +39,29 @@ func AuthorGet(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
 }
+
+func AuthorGetByName(w http.ResponseWriter, r *http.Request) {
+	authorname := chi.URLParam(r, "authorname")
+
+	author, err := models.AuthorGetByName(authorname)
+	if err != nil {
+		log.Printf("Failed getting author: %v", err)
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		return
+	}
+
+	books, err := models.GetBooksByAuthorID(author.ID)
+	if err != nil {
+		log.Printf("Failed getting books: %v", err)
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		return
+	}
+
+	response := map[string]interface{}{
+		"author": author,
+		"books":  books,
+	}
+
+	w.Header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}

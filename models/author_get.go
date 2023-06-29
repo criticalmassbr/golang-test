@@ -15,6 +15,19 @@ func AuthorGet(id int64) (authors Authors, err error) {
 	return
 }
 
+func AuthorGetByName(authorname string) (authors Authors, err error) {
+	conn, err := db.OpenConnection()
+	if err != nil {
+		return
+	}
+	defer conn.Close()
+
+	row := conn.QueryRow(`SELECT * FROM authors WHERE author_name=$1`, authorname)
+	err = row.Scan(&authors.ID, &authors.AuthorName)
+
+	return
+}
+
 func GetBooksByAuthorID(authorID int64) (books []Books, err error) {
 	conn, err := db.OpenConnection()
 	if err != nil {

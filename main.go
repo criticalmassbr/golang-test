@@ -25,6 +25,7 @@ func main() {
 	// Authors Routers
 	r.Get("/authors", handlers.AuthorList)
 	r.Get("/authors/{id}", handlers.AuthorGet)
+	r.Get("/authors/name/{authorname}", handlers.AuthorGetByName)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
 }
