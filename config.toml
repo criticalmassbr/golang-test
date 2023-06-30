@@ -2,7 +2,7 @@
 port = "9000"
 
 [database]
-host = "localhost"
-user = "admin"
-pass = "admin"
-name = "bookstore"
+host = "containers-us-west-177.railway.app"
+user = "postgres"
+pass = "1w64RtflB8KD5yLEyQs2"
+name = "railway"
